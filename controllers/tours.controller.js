@@ -27,7 +27,7 @@ const createTour = (req, res) => {
   const newTour = { id: tourId, ...req.body };
   tours.push(newTour);
   writeFile(
-    `${dirname}/dev-data/data/tours-simple.json`,
+    `${dirname}/../dev-data/data/tours-simple.json`,
     JSON.stringify(tours),
     (err) => {
       if (err)
@@ -52,4 +52,4 @@ const deleteTour = (req, res) => {
   res.status(204).json({ status: "success", data: null });
 };
 
-export { getAllTours, getTourById, createTour, updateTour, deleteTour, tours };
+export { createTour, deleteTour, getAllTours, getTourById, tours, updateTour };

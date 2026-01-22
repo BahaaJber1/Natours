@@ -1,18 +1,19 @@
-import express from "express";
 import {
+  createTour,
+  deleteTour,
   getAllTours,
   getTourById,
-  createTour,
+  tours,
   updateTour,
-  deleteTour,
 } from "#controllers/tours.controller";
-import { tours } from "#controllers/tours.controller";
-import { checkIdParam } from "#utils/checkIdParam";
+import { checkIdParam } from "#middlewares/checkIdParam.middleware";
+import { checkBody } from "#middlewares/checkBody.middleware";
+import express from "express";
 
 const toursRouter = express.Router();
 toursRouter.param("id", checkIdParam(tours)); // Middleware for the 'id' parameter
 
-toursRouter.route("/").get(getAllTours).post(createTour);
+toursRouter.route("/").get(getAllTours).post(checkBody, createTour);
 toursRouter.route("/:id").get(getTourById).patch(updateTour).delete(deleteTour);
 
 export { toursRouter };
