@@ -3,7 +3,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "prod": "NODE_ENV=production node ."
   },
   "packageManager": "yarn@4.12.0",
   "dependencies": {
